@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/estilo.css">
+    <title>Kuronet</title>
+    <link rel="icon" type="image/x-icon" href="../ico/kuronet_favicon.ico">
+</head>
+
+<header class=header>
+    <a class="header__logo" href="inicio.html">Kuronet</a>
+    <nav class="nav">
+        <a class="nav__seccion" href="../inicio.html">Inicio</a>
+        <a class="nav__seccion" href="../catalogo.html">Catalogo</a>
+        <a class="nav__seccion" href="../contacto.html">Contacto</a>
+        <a class="nav__seccion" href="../programas.html">Programas</a>
+    </nav>
+    <a href="login.html"><button class="login">Login</button></a>
+</header>
+
+<body class="body-programa">
+    <section class="section-programa section-programa--sn">
+        <form class="form-programa">
+            <table class="tabla-programa" border="1" <tr>
+                <th>Materias</th>
+                <th>Estudiante 1</th>
+                <th>Estudiante 2</th>
+                <th>Estudiante 3</th>
+                <th>Estudiante 4</th>
+                <th>Estudiante 5</th>
+                <th>Estudiante 6</th>
+                <th>Estudiante 7</th>
+                <th>Estudiante 8</th>
+                <th>Estudiante 9</th>
+                <th>Total Materia</th>
+                </tr>
+                <tr>
+                    <td>Base de Datos</td>
+                    <td>3.5</td>
+                    <td>4.2</td>
+                    <td>3.9</td>
+                    <td>4.5</td>
+                    <td>4.3</td>
+                    <td>3.7</td>
+                    <td>4.2</td>
+                    <td>4.0</td>
+                    <td>3.2</td>
+                    <td id="total_basededatos"></td>
+                </tr>
+                <tr>
+                    <td>Algoritmos</td>
+                    <td>3.5</td>
+                    <td>4.2</td>
+                    <td>3.9</td>
+                    <td>4.5</td>
+                    <td>4.3</td>
+                    <td>3.7</td>
+                    <td>4.2</td>
+                    <td>4.0</td>
+                    <td>3.2</td>
+                    <td id="total_algoritmos"></td>
+                </tr>
+                <tr>
+                    <td>Fisica</td>
+                    <td>3.3</td>
+                    <td>4.1</td>
+                    <td>3.8</td>
+                    <td>4.3</td>
+                    <td>4.6</td>
+                    <td>3.5</td>
+                    <td>2.5</td>
+                    <td>4.0</td>
+                    <td>3.6</td>
+                    <td id="total_fisica"></td>
+                </tr>
+                <tr>
+                    <td>Matematicas</td>
+                    <td>3.8</td>
+                    <td>4.2</td>
+                    <td>3.7</td>
+                    <td>4.1</td>
+                    <td>4.3</td>
+                    <td>3.5</td>
+                    <td>2.5</td>
+                    <td>4.2</td>
+                    <td>3.2</td>
+                    <td id="total_matematicas"></td>
+                </tr>
+                <tr>
+                    <td>Ingles I</td>
+                    <td>3.7</td>
+                    <td>4.3</td>
+                    <td>3.6</td>
+                    <td>4.1</td>
+                    <td>4.8</td>
+                    <td>3.6</td>
+                    <td>3.2</td>
+                    <td>4.0</td>
+                    <td>3.4</td>
+                    <td id="total_ingles1"></td>
+                </tr>
+                <tr>
+                    <td>Catedra Ecci</td>
+                    <td>3.6</td>
+                    <td>4.1</td>
+                    <td>3.5</td>
+                    <td>4.3</td>
+                    <td>4.3</td>
+                    <td>3.6</td>
+                    <td>2.5</td>
+                    <td>4.4</td>
+                    <td>3.2</td>
+                    <td id="total_catedra"></td>
+                </tr>
+                <tr>
+                    <td>Programacion Avanzada III</td>
+                    <td>3.0</td>
+                    <td>4.0</td>
+                    <td>3.4</td>
+                    <td>4.5</td>
+                    <td>4.2</td>
+                    <td>3.7</td>
+                    <td>2.8</td>
+                    <td>4.0</td>
+                    <td>3.0</td>
+                    <td id="total_programacion"></td>
+                </tr>
+                <tr>
+                    <td>Total estudiantes</td>
+                    <td id="total_estudiante1"></td>
+                    <td id="total_estudiante2"></td>
+                    <td id="total_estudiante3"></td>
+                    <td id="total_estudiante4"></td>
+                    <td id="total_estudiante5"></td>
+                    <td id="total_estudiante6"></td>
+                    <td id="total_estudiante7"></td>
+                    <td id="total_estudiante8"></td>
+                    <td id="total_estudiante9"></td>
+                    <td id="total_catedra"></td>
+                </tr>
+            </table>
+            <button class="form-login__button" id="calcular-button" type="button">Calcular</button>
+        </form>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2023 Kuronet</p>
+    </footer>
+    <script>
+        const calcularButton = document.getElementById("calcular-button");
+        const total_estudiante1TD = document.getElementById("total_estudiante1");
+        const total_estudiante2TD = document.getElementById("total_estudiante2");
+        const total_estudiante3TD = document.getElementById("total_estudiante3");
+        const total_estudiante4TD = document.getElementById("total_estudiante4");
+        const total_estudiante5TD = document.getElementById("total_estudiante5");
+        const total_estudiante6TD = document.getElementById("total_estudiante6");
+        const total_estudiante7TD = document.getElementById("total_estudiante7");
+        const total_estudiante8TD = document.getElementById("total_estudiante8");
+        const total_estudiante9TD = document.getElementById("total_estudiante9");
+
+        const total_basededatosTD = document.getElementById("total_basededatos");
+        const total_algoritmosTD = document.getElementById("total_algoritmos");
+        const total_fisicaTD = document.getElementById("total_fisica");
+        const total_matematicasTD = document.getElementById("total_matematicas");
+        const total_ingles1TD = document.getElementById("total_ingles1");
+        const total_catedraTD = document.getElementById("total_catedra");
+        const total_programacionTD = document.getElementById("total_programacion");
+
+
+        calcularButton.addEventListener("click", () => {
+            const matrizCalificaciones = [
+                [3.5, 4.2, 3.9, 4.5, 4.3, 3.7, 4.2, 4.0, 3.2],
+                [3.5, 4.2, 3.9, 4.5, 4.3, 3.7, 4.2, 4.0, 3.2],
+                [3.3, 4.1, 3.8, 4.3, 4.6, 3.5, 2.5, 4.0, 3.6],
+                [3.8, 4.2, 3.7, 4.1, 4.3, 3.5, 2.5, 4.2, 3.2],
+                [3.7, 4.3, 3.6, 4.1, 4.8, 3.6, 3.2, 4.0, 3.4],
+                [3.6, 4.1, 3.5, 4.3, 4.3, 3.6, 2.5, 4.4, 3.2],
+                [3.0, 4.0, 3.4, 4.5, 4.2, 3.7, 2.8, 4.0, 3.0]
+            ];
+
+            function calcularPromedio(arr) {
+                const sum = arr.reduce((total, calificacion) => total + calificacion, 0);
+                return sum / arr.length;
+            }
+
+            // Calcular el promedio por estudiante
+            const promedioEstudiantes = [];
+            for (let estudiante = 0; estudiante < matrizCalificaciones[0].length; estudiante++) {
+                const calificacionesEstudiante = [];
+                for (let materia = 0; materia < matrizCalificaciones.length; materia++) {
+                    calificacionesEstudiante.push(matrizCalificaciones[materia][estudiante]);
+                }
+                const promedio = calcularPromedio(calificacionesEstudiante);
+                promedioEstudiantes.push(promedio);
+            }
+
+            // Calcular el promedio por materia
+            const promedioMaterias = matrizCalificaciones.map((fila) => calcularPromedio(fila));
+
+
+            console.log("Promedio por estudiante:", promedioEstudiantes);
+            console.log("Promedio por materia:", promedioMaterias);
+
+            //Recorrer los arreglos que contienen los promedios, redondearlos y asignarlos a otro arreglo
+            promedioMateriasRedondeado = promedioMaterias.map(promedioM => promedioM.toFixed(1));
+            promedioEstudiantesRedondeado = promedioEstudiantes.map(promedioE => promedioE.toFixed(1));
+
+            total_estudiante1TD.textContent = promedioEstudiantesRedondeado[0];
+            total_estudiante2TD.textContent = promedioEstudiantesRedondeado[1];
+            total_estudiante3TD.textContent = promedioEstudiantesRedondeado[2];
+            total_estudiante4TD.textContent = promedioEstudiantesRedondeado[3];
+            total_estudiante5TD.textContent = promedioEstudiantesRedondeado[4];
+            total_estudiante6TD.textContent = promedioEstudiantesRedondeado[5];
+            total_estudiante7TD.textContent = promedioEstudiantesRedondeado[6];
+            total_estudiante8TD.textContent = promedioEstudiantesRedondeado[7];
+            total_estudiante9TD.textContent = promedioEstudiantesRedondeado[8];
+
+            total_basededatosTD.textContent = promedioMateriasRedondeado[0];
+            total_algoritmosTD.textContent = promedioMateriasRedondeado[1];
+            total_fisicaTD.textContent = promedioMateriasRedondeado[2];
+            total_matematicasTD.textContent = promedioMateriasRedondeado[3];
+            total_ingles1TD.textContent = promedioMateriasRedondeado[4];
+            total_catedraTD.textContent = promedioMateriasRedondeado[5];
+            total_programacionTD.textContent = promedioMateriasRedondeado[6];
+        });
+    </script>
+</body>
+
+</html>

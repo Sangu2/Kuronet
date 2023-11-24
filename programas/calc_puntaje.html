@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/estilo.css">
+    <title>Kuronet</title>
+    <link rel="icon" type="image/x-icon" href="../ico/kuronet_favicon.ico">
+</head>
+
+<header class=header>
+    <a class="header__logo" href="inicio.html">Kuronet</a>
+    <nav class="nav">
+        <a class="nav__seccion" href="../inicio.html">Inicio</a>
+        <a class="nav__seccion" href="../catalogo.html">Catalogo</a>
+        <a class="nav__seccion" href="../contacto.html">Contacto</a>
+        <a class="nav__seccion" href="../programas.html">Programas</a>
+    </nav>
+    <a href="login.html"><button class="login">Login</button></a>
+</header>
+
+<body class="body-programa">
+    <section class="section-programa">
+        <form class="form-programa">
+            <h1 class="form-programa__header">Calculadora de Puntaje</h1>
+            <label class="form-programa__label" for="correctas">Respuestas correctas</label>
+            <input class="form-programa__input" type="number" id="correctas" name="numero1" required>
+            <label class="form-programa__label" for="incorrectas">Respuestas incorrectas</label>
+            <input class="form-programa__input" type="number" id="incorrectas" name="incorrectas" required>
+            <label class="form-programa__label" for="en_blanco">Respuestas en blanco</label>
+            <input class="form-programa__input" type="number" id="en_blanco" name="en_blanco" required>
+            <button class="form-login__button" id="calcular-button" type="button">Calcular</button>
+            <label class="form-programa__label" for="puntaje">Puntaje final</label>
+            <input class="form-programa__input" id="puntaje" name="puntaje" readonly>
+        </form>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2023 Kuronet</p>
+    </footer>
+    <script>
+        const calcularButton = document.getElementById("calcular-button");
+        const correctasInput = document.getElementById("correctas");
+        const incorrectasInput = document.getElementById("incorrectas");
+        const en_blancoInput = document.getElementById("en_blanco");
+        const puntajeInput = document.getElementById("puntaje")
+        const valorCorrectas = 4;
+        const valorIncorrectas = -1;
+        const valorEnBlanco = 0;
+
+        calcularButton.addEventListener("click", function () {
+            const num_correctas = Math.trunc(correctasInput.value);
+            const num_incorrectas = Math.trunc(incorrectasInput.value);
+            const num_en_blanco = Math.trunc(en_blancoInput.value);
+
+            let puntaje = ((num_correctas * valorCorrectas)+(num_incorrectas * valorIncorrectas)+(num_en_blanco * valorEnBlanco));
+
+            puntajeInput.value = puntaje;
+        });
+    </script>
+
+</body>
+</html>

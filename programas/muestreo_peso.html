@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/estilo.css">
+    <title>Kuronet</title>
+    <link rel="icon" type="image/x-icon" href="../ico/kuronet_favicon.ico">
+</head>
+
+<header class=header>
+    <a class="header__logo" href="inicio.html">Kuronet</a>
+    <nav class="nav">
+        <a class="nav__seccion" href="../inicio.html">Inicio</a>
+        <a class="nav__seccion" href="../catalogo.html">Catalogo</a>
+        <a class="nav__seccion" href="../contacto.html">Contacto</a>
+        <a class="nav__seccion" href="../programas.html">Programas</a>
+    </nav>
+    <a href="login.html"><button class="login">Login</button></a>
+</header>
+
+<body class="body-programa">
+    <section class="section-programa section-programa--mp">
+        <form class="form-programa">
+            <h1 class="form-programa__header">Muestreo de personas</h1>
+            <label class="form-programa__label" for="edad">Edad de la persona</label>
+            <input class="form-programa__input" type="number" id="edad" name="edad" min="0" max="120" required>
+            <label class="form-programa__label" for="peso">Peso (en kg) de la persona</label>
+            <input class="form-programa__input" type="number" id="peso" name="peso" min="0" required>
+            <button class="form-login__button" id="agregar-button" type="button">Agregar persona</button>
+            <label class="form-programa__label" for="promedio-niños">Promedio de peso en niños</label>
+            <input class="form-programa__input" id="promedio-niños" name="promedio-niños" readonly>
+            <label class="form-programa__label" for="num-niños">Numero de niños</label>
+            <input class="form-programa__input" id="num-niños" name="num-niños" readonly>
+            <label class="form-programa__label" for="promedio-jovenes">Promedio de peso en jóvenes</label>
+            <input class="form-programa__input" id="promedio-jovenes" name="promedio-jovenes" readonly>
+            <label class="form-programa__label" for="num-jovenes">Número de jóvenes</label>
+            <input class="form-programa__input" id="num-jovenes" name="num-jovenes" readonly>
+            <label class="form-programa__label" for="promedio-adultos">Promedio de peso en adultos</label>
+            <input class="form-programa__input" id="promedio-adultos" name="promedio-adultos" readonly>
+            <label class="form-programa__label" for="num-adultos">Número de adultos</label>
+            <input class="form-programa__input" id="num-adultos" name="num-adultos" readonly>
+            <label class="form-programa__label" for="promedio-viejos">Promedio de peso en viejos</label>
+            <input class="form-programa__input" id="promedio-viejos" name="promedio-viejos" readonly>
+            <label class="form-programa__label" for="num-viejos">Número de viejos</label>
+            <input class="form-programa__input" id="num-viejos" name="num-viejos" readonly>
+        </form>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2023 Kuronet</p>
+    </footer>
+    <script>
+        let sumaNiños = 0;
+        let cantidadNiños = 0;
+        let sumaJovenes = 0;
+        let cantidadJovenes = 0;
+        let sumaAdultos = 0;
+        let cantidadAdultos = 0;
+        let sumaViejos = 0;
+        let cantidadViejos = 0;
+
+        // Función para actualizar los campos de promedio y cantidad
+        function actualizarCampos() {
+            const inputEdad = document.getElementById("edad");
+            const inputPeso = document.getElementById("peso");
+
+            const edad = parseInt(inputEdad.value);
+            const peso = parseInt(inputPeso.value);
+
+            if (edad >= 0 && edad <= 13) {
+                // Categoría Niños
+                sumaNiños += peso;
+                cantidadNiños++;
+                const promedioNiños = sumaNiños / cantidadNiños;
+                document.getElementById("promedio-niños").value = promedioNiños.toFixed(2);
+                document.getElementById("num-niños").value = cantidadNiños;
+            } else if (edad >= 14 && edad <= 30) {
+                // Categoría Jóvenes
+                sumaJovenes += peso;
+                cantidadJovenes++;
+                const promedioJovenes = sumaJovenes / cantidadJovenes;
+                document.getElementById("promedio-jovenes").value = promedioJovenes.toFixed(2);
+                document.getElementById("num-jovenes").value = cantidadJovenes;
+            } else if (edad >= 31 && edad <= 60) {
+                // Categoría Adultos
+                sumaAdultos += peso;
+                cantidadAdultos++;
+                const promedioAdultos = sumaAdultos / cantidadAdultos;
+                document.getElementById("promedio-adultos").value = promedioAdultos.toFixed(2);
+                document.getElementById("num-adultos").value = cantidadAdultos;
+            } else if (edad >= 61) {
+                // Categoría Viejos
+                sumaViejos += peso;
+                cantidadViejos++;
+                const promedioViejos = sumaViejos / cantidadViejos;
+                document.getElementById("promedio-viejos").value = promedioViejos.toFixed(2);
+                document.getElementById("num-viejos").value = cantidadViejos;
+            }
+
+            // Limpiar campos de entrada
+            inputEdad.value = "";
+            inputPeso.value = "";
+        }
+
+        const agregarButton = document.getElementById("agregar-button");
+        agregarButton.addEventListener("click", actualizarCampos);
+    </script>
+</body>
+
+</html>

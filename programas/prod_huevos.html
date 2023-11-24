@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/estilo.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.5.1/math.js"></script>
+    <title>Kuronet</title>
+    <link rel="icon" type="image/x-icon" href="../ico/kuronet_favicon.ico">
+</head>
+
+<header class=header>
+    <a class="header__logo" href="inicio.html">Kuronet</a>
+    <nav class="nav">
+        <a class="nav__seccion" href="../inicio.html">Inicio</a>
+        <a class="nav__seccion" href="../catalogo.html">Catalogo</a>
+        <a class="nav__seccion" href="../contacto.html">Contacto</a>
+        <a class="nav__seccion" href="../programas.html">Programas</a>
+    </nav>
+    <a href="login.html"><button class="login">Login</button></a>
+</header>
+
+<body class="body-programa">
+    <section class="section-programa">
+        <form class="form-programa">
+            <h1 class="form-programa__header">Produccion de huevos</h1>
+            <label class="form-programa__label" for="num-gallinas">Numero de gallinas</label>
+            <input class="form-programa__input" type="number" id="num-gallinas" name="num-gallinas" required>
+            <label class="form-programa__label" for="num-dias">Numero de dias</label>
+            <input class="form-programa__input" type="number" id="num-dias" name="num-dias" required>
+            <button class="form-login__button" id="calcular-button" type="button">Calcular</button>
+            <label class="form-programa__label" for="resultado">Resultado</label>
+            <input class="form-programa__input" id="resultado" name="resultado" readonly>
+        </form>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2023 Kuronet</p>
+    </footer>
+    <script>
+        // Función para calcular la producción de huevos
+        function calcularProduccion() {
+            const numGallinas = parseInt(document.getElementById("num-gallinas").value);
+            const numDias = parseInt(document.getElementById("num-dias").value);
+
+            let produccion = 1;
+
+            for (let n = 1; n <= numDias; n++) {
+                let termino = math.pow(numGallinas, n) / math.factorial(n);
+                produccion += termino;
+            }
+
+            document.getElementById("resultado").value = produccion.toFixed(2);
+        }
+
+        const calcularButton = document.getElementById("calcular-button");
+        calcularButton.addEventListener("click", calcularProduccion);
+    </script>
+</body>
+
+</html>

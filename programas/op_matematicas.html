@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/estilo.css">
+    <title>Kuronet</title>
+    <link rel="icon" type="image/x-icon" href="../ico/kuronet_favicon.ico">
+</head>
+
+<header class=header>
+    <a class="header__logo" href="inicio.html">Kuronet</a>
+    <nav class="nav">
+        <a class="nav__seccion" href="../inicio.html">Inicio</a>
+        <a class="nav__seccion" href="../catalogo.html">Catalogo</a>
+        <a class="nav__seccion" href="../contacto.html">Contacto</a>
+        <a class="nav__seccion" href="../programas.html">Programas</a>
+    </nav>
+    <a href="login.html"><button class="login">Login</button></a>
+</header>
+
+<body class="body-programa">
+    <section class="section-programa">
+        <form class="form-programa">
+            <h1 class="form-programa__header">Operaciones Matematicas</h1>
+            <p>&nbsp;</p>
+            <label class="form-programa__label" for="numero1">Primer numero</label>
+            <input class="form-programa__input" type="number" id="numero1" name="numero1" required>
+            <label class="form-programa__label" for="numero2">Segundo numero</label>
+            <input class="form-programa__input" type="number" id="numero2" name="numero2" required>
+            <select class="form-programa__select" id="operacion">
+                <option class="form-programa__option" value="suma">Suma</option>
+                <option class="form-programa__option" value="resta">Resta</option>
+                <option class="form-programa__option" value="producto">Producto</option>
+                <option class="form-programa__option" value="division">División</option>
+            </select>
+            <button class="form-login__button" id="calcular-button" type="button">Calcular</button>
+            <label class="form-programa__label" for="resultado">Resultado</label>
+            <input class="form-programa__input" id="resultado" name="resultado" readonly>
+        </form>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2023 Kuronet</p>
+    </footer>
+    <script>
+        const calcularButton = document.getElementById("calcular-button");
+        const resultadoInput = document.getElementById("resultado");
+        const numero1Input = document.getElementById("numero1");
+        const numero2Input = document.getElementById("numero2");
+        const operacionSelect = document.getElementById("operacion");
+
+        calcularButton.addEventListener("click", function () {
+            const num1 = parseFloat(numero1Input.value);
+            const num2 = parseFloat(numero2Input.value);
+            const operacion = operacionSelect.value;
+
+            let resultado = 0;
+
+            if (operacion === "suma") {
+                resultado = num1 + num2;
+            } else if (operacion === "resta") {
+                resultado = num1 - num2;
+            } else if (operacion === "producto") {
+                resultado = num1 * num2;
+            } else if (operacion === "division") {
+                if (num2 !== 0) {
+                    resultado = num1 / num2;
+                } else {
+                    resultado = "Error: División por cero";
+                }
+            }
+
+            if (typeof resultado === "string") {
+            } else {
+                resultado = resultado.toFixed(1);
+            }
+
+            resultadoInput.value = resultado;
+        });
+    </script>
+</body>
+
+</html>

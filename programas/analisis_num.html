@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/estilo.css">
+    <title>Kuronet</title>
+    <link rel="icon" type="image/x-icon" href="../ico/kuronet_favicon.ico">
+</head>
+
+<header class=header>
+    <a class="header__logo" href="inicio.html">Kuronet</a>
+    <nav class="nav">
+        <a class="nav__seccion" href="../inicio.html">Inicio</a>
+        <a class="nav__seccion" href="../catalogo.html">Catalogo</a>
+        <a class="nav__seccion" href="../contacto.html">Contacto</a>
+        <a class="nav__seccion" href="../programas.html">Programas</a>
+    </nav>
+    <a href="login.html"><button class="login">Login</button></a>
+</header>
+
+<body class="body-programa">
+    <section class="section-programa">
+        <form class="form-programa">
+            <h1 class="form-programa__header">Analisis de Numeros</h1>
+            <label class="form-programa__label" for="lista_num">Lista de numeros (Separados por coma)</label>
+            <input class="form-programa__input" type="text" id="lista_num" name="lista_num" required>
+            <button class="form-login__button" id="generar-button" type="button">Generar Analisis</button>
+            <label class="form-programa__label" for="num_positivos">Numeros positivos</label>
+            <input class="form-programa__input" id="num_positivos" name="num_positivos" readonly>
+            <label class="form-programa__label" for="num_negativos">Numeros negativos</label>
+            <input class="form-programa__input" id="num_negativos" name="num_negativos" readonly>
+            <label class="form-programa__label" for="neutros">Numeros neutros</label>
+            <input class="form-programa__input" id="neutros" name="neutros" readonly>
+            <label class="form-programa__label" for="sumatoria">Sumatoria de los numeros</label>
+            <input class="form-programa__input" id="sumatoria" name="sumatoria" readonly>
+        </form>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2023 Kuronet</p>
+    </footer>
+    <script>
+        const generarButton = document.getElementById("generar-button");
+        const listaNumInput = document.getElementById("lista_num");
+        const numPositivosInput = document.getElementById("num_positivos");
+        const numNegativosInput = document.getElementById("num_negativos");
+        const neutrosInput = document.getElementById("neutros");
+        const sumatoriaInput = document.getElementById("sumatoria");
+
+        generarButton.addEventListener("click", function () {
+          // Obtener la lista de números ingresada por el usuario
+          const listaNumeros = listaNumInput.value.trim().split(",");
+
+          // Inicializar contadores
+          let positivos = 0;
+          let negativos = 0;
+          let neutros = 0;
+          let sumatoria = 0;
+
+          // Recorrer la lista y realizar el análisis
+          for (let i = 0; i < listaNumeros.length; i++) {
+            const numero = parseFloat(listaNumeros[i]);
+
+            if (!isNaN(numero)) {
+              if (numero > 0) {
+                positivos++;
+              } else if (numero < 0) {
+                negativos++;
+              } else {
+                neutros++;
+              }
+              sumatoria += numero;
+            }
+          }
+
+          // Mostrar los resultados en los campos de entrada
+          numPositivosInput.value = positivos;
+          numNegativosInput.value = negativos;
+          neutrosInput.value = neutros;
+          sumatoriaInput.value = sumatoria;
+        });
+      </script>
+</body>
+
+</html>
+

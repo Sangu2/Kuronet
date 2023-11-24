@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/estilo.css">
+    <title>Kuronet</title>
+    <link rel="icon" type="image/x-icon" href="../ico/kuronet_favicon.ico">
+</head>
+
+<header class=header>
+    <a class="header__logo" href="inicio.html">Kuronet</a>
+    <nav class="nav">
+        <a class="nav__seccion" href="../inicio.html">Inicio</a>
+        <a class="nav__seccion" href="../catalogo.html">Catalogo</a>
+        <a class="nav__seccion" href="../contacto.html">Contacto</a>
+        <a class="nav__seccion" href="../programas.html">Programas</a>
+    </nav>
+    <a href="login.html"><button class="login">Login</button></a>
+</header>
+
+<body class="body-programa">
+    <section class="section-programa">
+        <form class="form-programa">
+            <h1 class="form-programa__header">Registro de Temperaturas</h1>
+            <button class="form-login__button" id="registro-button" type="button">Empezar Registro</button>
+            <label class="form-programa__label" for="dias">Numero de dias registrados</label>
+            <input class="form-programa__input" id="dias" name="dias" readonly>
+            <label class="form-programa__label" for="media-tempmax">Media de Temperaturas Maximas</label>
+            <input class="form-programa__input" id="media-tempmax"" name=" media-tempmax"" readonly>
+            <label class="form-programa__label" for="media-tempmin">Media de Temperaturas Minimas</label>
+            <input class="form-programa__input" id="media-tempmin" name="media-tempmin" readonly>
+            <label class="form-programa__label" for="num-errores">Numero de errores</label>
+            <input class="form-programa__input" id="num-errores" name="num-errores" readonly>
+            <label class="form-programa__label" for="porc-errores">Porcentaje de errores</label>
+            <input class="form-programa__input" id="porc-errores" name="porc-errores" readonly>
+        </form>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2023 Kuronet</p>
+    </footer>
+    <script>
+        const registroButton = document.getElementById("registro-button");
+        const diasInput = document.getElementById("dias");
+        const mediaTempMaxInput = document.getElementById("media-tempmax");
+        const mediaTempMinInput = document.getElementById("media-tempmin");
+        const numErroresInput = document.getElementById("num-errores");
+        const porcErroresInput = document.getElementById("porc-errores");
+
+
+        registroButton.addEventListener("click", function () {
+            const temperaturasDiarias = []; // Array para almacenar las temperaturas diarias
+
+            // Limpiar los campos de entrada
+            diasInput.value = "";
+            mediaTempMaxInput.value = "";
+            mediaTempMinInput.value = "";
+            numErroresInput.value = "";
+            porcErroresInput.value = "";
+
+            let temperaturaMaxima;
+            let temperaturaMinima;
+
+            // Loop para ingresar las temperaturas diarias (hasta que se ingrese 0,0)
+            while (true) {
+                temperaturaMaxima = parseFloat(prompt("Ingrese la temperatura máxima (0 para finalizar):"));
+                temperaturaMinima = parseFloat(prompt("Ingrese la temperatura mínima (0 para finalizar):"));
+
+
+                if (temperaturaMaxima === 0 && temperaturaMinima === 0) {
+                    break; // Finalizar la entrada de datos
+                }
+
+                if (isNaN(temperaturaMaxima) || isNaN(temperaturaMinima)) {
+                    break; // Finalizar la entrada de datos si se ingresa texto dentro del prompt
+                }
+
+                // Verificar si hay errores (temperaturas de 9 grados)
+                const hayErrores = temperaturaMaxima === 9 || temperaturaMinima === 9;
+
+                // Almacenar las temperaturas diarias
+                temperaturasDiarias.push({
+                    maxima: temperaturaMaxima,
+                    minima: temperaturaMinima,
+                    errores: hayErrores
+                });
+            };
+
+            if (isNaN(temperaturaMaxima) || isNaN(temperaturaMinima)) {
+                alert("Ingresa un valor valido");
+            }
+            else {
+                // Calcular el número de días
+                const numeroDeDias = temperaturasDiarias.length;
+
+                // Calcular la media de las temperaturas máximas y mínimas
+                let sumaMaximas = 0;
+                let sumaMinimas = 0;
+
+                temperaturasDiarias.forEach((temperatura) => {
+                    sumaMaximas += temperatura.maxima;
+                    sumaMinimas += temperatura.minima;
+                });
+
+                const mediaMaximas = sumaMaximas / numeroDeDias;
+                const mediaMinimas = sumaMinimas / numeroDeDias;
+
+                // Calcular el número de errores y su porcentaje
+                const numeroDeErrores = temperaturasDiarias.filter((temperatura) => temperatura.errores).length;
+                const porcentajeDeErrores = (numeroDeErrores / numeroDeDias) * 100;
+
+                // Actualizar los campos de entrada con los resultados
+                diasInput.value = numeroDeDias;
+                mediaTempMaxInput.value = mediaMaximas.toFixed(2);
+                mediaTempMinInput.value = mediaMinimas.toFixed(2);
+                numErroresInput.value = numeroDeErrores;
+                porcErroresInput.value = porcentajeDeErrores.toFixed(2) + "%";
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/estilo.css">
+    <title>Kuronet</title>
+    <link rel="icon" type="image/x-icon" href="../ico/kuronet_favicon.ico">
+</head>
+
+<header class=header>
+    <a class="header__logo" href="inicio.html">Kuronet</a>
+    <nav class="nav">
+        <a class="nav__seccion" href="../inicio.html">Inicio</a>
+        <a class="nav__seccion" href="../catalogo.html">Catalogo</a>
+        <a class="nav__seccion" href="../contacto.html">Contacto</a>
+        <a class="nav__seccion" href="../programas.html">Programas</a>
+    </nav>
+    <a href="login.html"><button class="login">Login</button></a>
+</header>
+
+<body class="body-programa">
+    <section class="section-programa section-programa--fm">
+        <form class="form-programa">
+            <h1 class="form-programa__header">Funciones Matematicas</h1>
+            <label class="form-programa__label" for="numero1">Ingrese un numero</label>
+            <input class="form-programa__input" type="number" id="numero1" name="numero1" required>
+            <button class="form-login__button" id="calcular-button" type="button">Calcular</button>
+            <p>&nbsp;</p>
+            <label class="form-programa__label" for="resultado">Funciones Matematicas</label>
+            <label class="form-programa__label" for="coseno">Coseno</label>
+            <input class="form-programa__input" id="coseno" name="coseno" readonly>
+            <label class="form-programa__label" for="seno">Seno</label>
+            <input class="form-programa__input" id="seno" name="seno" readonly>
+            <label class="form-programa__label" for="tangente">Tangente</label>
+            <input class="form-programa__input" id="tangente" name="tangente" readonly>
+            <label class="form-programa__label" for="log10">Logaritmo en Base 10</label>
+            <input class="form-programa__input" id="log10" name="log10" readonly>
+            <label class="form-programa__label" for="logNatural">Logaritmo Natural</label>
+            <input class="form-programa__input" id="logNatural" name="logNatural" readonly>
+            <label class="form-programa__label" for="raizCuadrada">Raiz Cuadrada</label>
+            <input class="form-programa__input" id="raizCuadrada" name="raizCuadrada" readonly>
+            <label class="form-programa__label" for="raizCubica">Raiz Cubica</label>
+            <input class="form-programa__input" id="raizCubica" name="raizCubica" readonly>
+            <label class="form-programa__label" for="redondear">Redondear</label>
+            <input class="form-programa__input" id="redondear" name="redondear" readonly>
+            <label class="form-programa__label" for="signo">Signo de un numero</label>
+            <input class="form-programa__input" id="signo" name="signo" readonly>
+            <label class="form-programa__label" for="numeroAleatorio">Numero aleatorio</label>
+            <input class="form-programa__input" id="numeroAleatorio" name="numeroAleatorio" readonly>
+        </form>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2023 Kuronet</p>
+    </footer>
+    <script>
+        const calcularButton = document.getElementById("calcular-button");
+        const numero1Input = document.getElementById("numero1");
+        const cosenoInput = document.getElementById("coseno");
+        const senoInput = document.getElementById("seno");
+        const tangenteInput = document.getElementById("tangente");
+        const log10Input = document.getElementById("log10");
+        const logNaturalInput = document.getElementById("logNatural");
+        const raizCuadradaInput = document.getElementById("raizCuadrada");
+        const raizCubicaInput = document.getElementById("raizCubica");
+        const redondearInput = document.getElementById("redondear");
+        const signoInput = document.getElementById("signo");
+        const numeroAleatorioInput = document.getElementById("numeroAleatorio");
+
+        calcularButton.addEventListener("click", function () {
+            const num = parseFloat(numero1Input.value);
+
+            // Realiza las operaciones matemáticas
+            cosenoInput.value = Math.cos(num);
+            senoInput.value = Math.sin(num);
+            tangenteInput.value = Math.tan(num);
+            log10Input.value = Math.log10(num);
+            logNaturalInput.value = Math.log(num);
+            raizCuadradaInput.value = Math.sqrt(num);
+            raizCubicaInput.value = Math.cbrt(num);
+            redondearInput.value = Math.round(num);
+            signoInput.value = Math.sign(num);
+            numeroAleatorioInput.value = Math.random();
+
+            //Cambiar resultado de -Infinity por Indefinido cuando el num es 0
+            if (num == 0) {
+                log10Input.value = "Indefinido";
+                logNaturalInput.value = "Indefinido";
+            }
+
+            //Descripcion de math.sign con un texto en vez de un valor numerico
+            switch (Math.sign(parseFloat(signoInput.value))) {
+                case 1:
+                    signoInput.value = "Es positivo";
+                    break;
+                case -1:
+                    signoInput.value = "Es negativo";
+                    break;
+                case 0:
+                    signoInput.value = "Es 0";
+                    break;
+            }
+
+            //Mensaje de alerta en caso de que num sea un numero negativo para las operaciones log10, logNatural y raizCuadrada
+            if (Math.sign(num) == -1) {
+                log10Input.value = "El numero debe ser positivo";
+                logNaturalInput.value = "El numero debe ser positivo";
+                raizCuadradaInput.value = "El numero debe ser positivo";
+            }
+
+        });
+    </script>
+</body>
+
+</html>

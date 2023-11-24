@@ -1,0 +1,799 @@
+
+@font-face {
+    font-family: 'VA-11 Hall-A Cyr';
+    font-style: normal;
+    font-weight: 400;
+    src: local('VA-11 Hall-A Cyr'), url("../fuentes/va-11-hall-a-cyr-10px.otf") format('opentype');
+}
+
+
+body {
+    font-family: 'VA-11 Hall-A Cyr';
+    background-color: #1e2124;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/*----------------------------------------INICIO APARTADO BARRA DE NAVEGACION--------------------------------------------*/
+
+.header {
+    background-color: #36393e;
+    color: #fff;
+    min-height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+
+.header__logo{
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 40px;
+    margin-left: 30px;
+}
+
+.login{
+    font-family: 'VA-11 Hall-A Cyr';
+    font-weight: bold;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: 35px;
+    width: 70px;
+    margin-right: 30px;
+}
+
+.login:hover{
+    background-color: #c0392b;
+}
+
+
+.nav__seccion{
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding-right: 40px;
+}
+
+.nav__seccion:hover{
+    color:#e74c3c;
+}
+
+/*----------------------------------------FIN APARTADO BARRA DE NAVEGACION--------------------------------------------*/
+
+
+/*----------------------------------------INICIO APARTADO PAGINA DE INTRODUCCION--------------------------------------------*/
+
+.intro{
+    margin: 0 auto;
+    margin-top: 100px;
+    padding:10px;
+    background-color:#424549;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    text-align: center;
+}
+
+.intro__titulo{
+    text-align: center;
+    justify-content: center;
+    font-weight: lighter;
+    font-size: 40px;
+
+}
+
+.intro__parrafo{
+    color: rgba(255, 255, 255, 0.8);
+    padding-bottom: 10px;
+    justify-content: left;
+    text-align: left;
+    font-size: 20px;
+    word-spacing: 2px;
+}
+
+/*----------------------------------------FIN APARTADO PAGINA DE INTRODUCCION--------------------------------------------*/
+
+
+/*----------------------------------------INICIO APARTADO PAGINA DE CATALOGO--------------------------------------------*/
+
+.titulo{
+    margin-top: 70px;
+    margin-left: 10%;
+    font-size: 25px;
+    font-weight: normal;
+}
+
+.productos{
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.productos__producto{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 420px;
+    margin: 0 10px;
+}
+
+/* Agrega animación de agrandamiento al pasar el cursor */
+.productos__producto:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Cambia el cursor al hacer clic */
+.productos__producto:active {
+    cursor: pointer;
+}
+
+.producto__icono{
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.producto__titulo{
+    font-weight: bold;
+    height: 52px;
+    width: 404px;
+}
+
+.producto__descripcion{
+    color: rgba(255, 255, 255, 0.7);
+    height: 121px;
+}
+
+.producto__descripcion::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255); /* Color de la línea */
+    position: absolute;
+    bottom: 50px; /* Ajusta la distancia de la línea desde abajo */
+    left: 0;
+}
+
+.producto__precio{
+    color:#e74c3c;
+    font-weight: bold;
+}
+
+.producto__tags{
+    display: inline-block;
+    padding: 3px 6px; /* Ajusta el espaciado interno del tag */
+    border: 1px solid #000; /* Color y grosor del borde */
+    border-radius: 5px; /* Borde redondeado */
+    margin: 2px; /* Ajusta el margen entre los tags */
+    background-color: #1e2124;
+}
+
+.productos__producto--fondo1{
+    position: sticky;
+    background-image: url(https://i.pinimg.com/originals/77/08/ac/7708ac7ffdaa670805c1f046429830e4.gif);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.productos__producto--fondo1::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: cover;
+    filter: blur(3px); /* Ajusta el valor del desenfoque según tu preferencia */
+    z-index: -1;
+}
+
+.productos__producto--fondo2{
+    position: sticky;
+    background-image: url(https://media.tenor.com/EOYHiQwsaW8AAAAC/milk-bag-milk-outside.gif);
+    background-size: cover;
+    overflow: hidden;
+}
+.productos__producto--fondo2::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: cover;
+    filter: blur(3px); /* Ajusta el valor del desenfoque según tu preferencia */
+    z-index: -2;
+}
+
+.productos__producto--fondo3{
+    position: sticky;
+    background-image: url(https://steamuserimages-a.akamaihd.net/ugc/918041146873583370/10A151CCB69C853D5632FA50BC95E7EC738C8914/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.productos__producto--fondo3::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: cover;
+    filter: blur(3px); /* Ajusta el valor del desenfoque según tu preferencia */
+    z-index: -3;
+}
+
+.productos__producto--fondo4{
+    position: sticky;
+    background-image: url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRIRpJ4ua1RTtsPPh2vs50bNvPm6BtOZJaA9flpWpl9bCQDJ1rd);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.productos__producto--fondo4::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: cover;
+    filter: blur(3px); /* Ajusta el valor del desenfoque según tu preferencia */
+    z-index: -4;
+}
+
+.productos__producto--fondo5{
+    position: sticky;
+    background-image: url(https://esports.as.com/2022/05/30/call-of-duty/banner-Call-Duty-vuelta-Steam_1578752153_985517_1440x810.jpg);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.productos__producto--fondo5::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: cover;
+    filter: blur(3px); /* Ajusta el valor del desenfoque según tu preferencia */
+    z-index: -5;
+}
+
+.productos__producto--fondo6{
+    position: sticky;
+    background-image: url(https://images.hindustantimes.com/tech/img/2023/03/07/960x540/_0f3052c8-e4f3-11e9-bf1a-4811dd02bcdc_1678188485060_1678188485060.jpg);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.productos__producto--fondo6::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: cover;
+    filter: blur(3px); /* Ajusta el valor del desenfoque según tu preferencia */
+    z-index: -6;
+}
+
+/*----------------------------------------FIN APARTADO PAGINA DE CATALOGO--------------------------------------------*/
+
+/*----------------------------------------INICIO APARTADO TABLA DESCRIPTIVA PRODUCTOS--------------------------------------------*/
+
+
+.juego__titulo{
+    padding-top: 50px;
+    padding-left: 100px;
+    font-size: 40px;
+    font-weight: lighter;
+}
+
+.juego__trailer{
+    width: 1000px;
+    height: 600px;
+    padding-left: 100px;
+}
+
+.juego__info{
+    position: absolute;
+    left: 1350px;
+    width: 380px;
+    bottom: 17px;
+}
+
+.juego__info--header{
+    width: 380px;
+    height: 180px;
+    border-radius: 5px;
+}
+
+.linea-aux1{
+    width: 380px;
+    border-bottom: 3px solid #fff;
+    border-radius: 5px;
+}
+
+.juego__info--tags {
+    display: flex;
+    gap: 40px; /* Espacio entre los tags */
+}
+
+.juego__info--tags a {
+    background-color: #36393e; /* Color del botón de login */
+    color: #fff;
+    padding: 5px 10px; /* Espacio interno de los tags */
+    border-radius: 5px; /* Borde redondeado */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+.juego__info--precio{
+    margin-top: 100px;
+    padding-top: 100px;
+    font-size: 40px;
+}
+
+.linea-aux2{
+    width: 380px;
+    border-bottom: 2px solid #424549;
+    border-radius: 5px;
+}
+
+.juego__info--compra{
+    width: 380px;
+    height:50px;
+    margin-top: 30px;
+    font-family: 'VA-11 Hall-A Cyr';
+    font-size: 20px;
+    font-weight: lighter;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.juego__info--compra:hover{
+    background-color: #c0392b;
+}
+
+.juego__specs--sistema-tabla {
+    margin-top: 40px;
+    border: 1px solid white;
+    border-collapse: collapse;
+    background-color: #e74c3c;
+    width:1000px;
+    text-align: center;
+}
+
+.juego__specs--sistema-tabla-columna{
+    font-size: 20px;
+}
+
+.juego__specs{
+    width: 1000px;
+    border-radius: 5px;
+    height: 800px;
+    padding-left: 100px;
+}
+
+.juego__specs--about-titulo{
+    font-size: 30px;
+    font-weight: lighter;
+}
+
+.juego__specs--about{
+    font-size: 18px;
+    padding-bottom: 30px;
+}
+
+.juego__specs--about-lista{
+    background-color: #282b30;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 8px;
+}
+
+.juego__specs--sistema-titulo{
+    padding-top: 50px;
+    font-weight: lighter;
+    font-size: 30px;
+}
+
+
+/*----------------------------------------FIN APARTADO TABLA DESCRIPTIVA PRODUCTOS--------------------------------------------*/
+
+
+
+
+/*----------------------------------------INICIO APARTADO CONTACTANOS--------------------------------------------------------*/
+
+
+.form-contacto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-contacto__header{
+    margin-top: 90px;
+    font-size: 40px;
+    font-weight: lighter;
+}
+
+.form-contacto__label{
+    text-align: left;
+    justify-content: left;
+    width: 380px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.form-contacto__input{
+    font-family: 'VA-11 Hall-A Cyr';
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: lighter;
+    background-color: #36393e;
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    width: 360px;
+    outline: none;
+    color: white;
+    padding: 10px;
+}
+
+.form-contacto__textarea{
+    font-family: 'VA-11 Hall-A Cyr';
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: lighter;
+    background-color: #36393e;
+    border: none;
+    border-radius: 5px;
+    height: 115px;
+    width: 360px;
+    resize: none;
+    outline: none;
+    color: white;
+    padding: 10px;
+}
+
+.form-contacto__button{
+    margin-top: 50px;
+    height: 50px;
+    width: 360px;
+    font-family: 'VA-11 Hall-A Cyr';
+    font-size: 20px;
+    font-weight: lighter;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-contacto__button:hover{
+    background-color: #c0392b;
+}
+
+
+/*----------------------------------------FIN APARTADO CONTACTANOS--------------------------------------------------------*/
+
+
+
+
+/*----------------------------------------INICIO APARTADO LOGIN Y REGISTRO--------------------------------------------------------*/
+
+
+.body-login, .body-registro{
+    background-image: url('https://neocha-content.oss-cn-hongkong.aliyuncs.com/wp-content/uploads/sites/2/2016/11/1041uuu-06.gif');
+    background-size: cover;
+}
+
+.section-login{
+    background-color: #1e2124;
+    width: 550px;
+    height: 500px;
+    margin: 0 auto;
+    margin-top: 200px;
+    padding-top: 30px;
+    border-radius: 10px;
+}
+
+.section-registro{
+    background-color: #1e2124;
+    width: 550px;
+    height: 580px;
+    margin: 0 auto;
+    margin-top: 200px;
+    padding-top: 30px;
+    border-radius: 10px;
+}
+
+.img-login{
+    width: 100px;
+    height: 100px;
+    padding-bottom: 20px;
+}
+
+.form-login, .form-registro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-login__header, .form-registro__header{
+    font-size: 30px;
+    font-weight: lighter;
+    margin-top: 0;
+}
+
+.form-login__label, .form-registro__label{
+    font-size: 20px;
+    font-weight: lighter;
+    width:320px;
+    margin-top: 20px;
+    justify-content: left;
+}
+
+.form-login__input, .form-registro__input{
+    font-family: 'VA-11 Hall-A Cyr';
+    margin-top: 5px;
+    font-size: 18px;
+    font-weight: lighter;
+    background-color: #36393e;
+    border: none;
+    border-radius: 5px;
+    height: 10px;
+    width: 300px;
+    outline: none;
+    color: white;
+    padding: 10px;
+}
+
+.form-login__registro{
+    width: 320px;
+    text-decoration: none;
+    margin-top: 8px;
+    font-size: 15px;
+    font-weight: lighter;
+    color:#e74c3c;
+}
+
+.form-login__button, .form-registro__button{
+    margin-top: 40px;
+    height: 50px;
+    width: 320px;
+    font-family: 'VA-11 Hall-A Cyr';
+    font-size: 20px;
+    font-weight: lighter;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-login__button:hover, .form-registro__button:hover{
+    background-color: #c0392b;
+}
+
+
+/*----------------------------------------FIN APARTADO LOGIN Y REGISTRO--------------------------------------------------------*/
+
+
+
+/*----------------------------------------INICIO APARTADO PROGRAMAS--------------------------------------------------------*/
+
+
+.seccion-programas{
+    text-align: center;
+    margin-top: 100px;
+}
+.seccion-header{
+    font-size: 40px;
+    font-weight: lighter;
+    align-items: center;
+}
+
+.nav-lista {
+    list-style-type: disc;
+    padding: 0;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.nav-seccion__header{
+    font-size: 40px;
+    font-weight: lighter;
+}
+
+.nav-lista-vineta {
+    margin: 0;
+}
+
+.nav-seccion__programas {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 5px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.nav-seccion__programas:hover{
+    color: #e74c3c;
+}
+
+.section-programa{
+    background-color: #424549;
+    width: 550px;
+    height: 580px;
+    margin: 0 auto;
+    margin-top: 200px;
+    padding-top: 30px;
+    border-radius: 10px;
+}
+
+.section-programa--fm{
+    height: 1200px;
+}
+
+.section-programa--mp{
+    height: 1000px;
+}
+
+.section-programa--sn{
+    height: 400px;
+    width: 1500px;
+}
+
+.section-programa--ne{
+    height: 1350px;
+}
+
+.form-programa{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-programa__header{
+    font-size: 30px;
+    font-weight: lighter;
+    margin-top: 0;
+}
+
+.form-programa__label{
+    font-size: 20px;
+    font-weight: lighter;
+    width:320px;
+    margin-top: 20px;
+    justify-content: left;
+}
+
+.form-programa__input{
+    font-family: 'VA-11 Hall-A Cyr';
+    margin-top: 5px;
+    font-size: 18px;
+    font-weight: lighter;
+    background-color: #36393e;
+    border: none;
+    border-radius: 5px;
+    height: 10px;
+    width: 300px;
+    outline: none;
+    color: white;
+    padding: 10px;
+}
+
+.form-programa__button{
+    margin-top: 40px;
+    height: 50px;
+    width: 320px;
+    font-family: 'VA-11 Hall-A Cyr';
+    font-size: 20px;
+    font-weight: lighter;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-programa__button:hover{
+    background-color: #c0392b;
+}
+
+.form-programa__select{
+    font-family: 'VA-11 Hall-A Cyr';
+    font-weight: lighter;
+    font-size: 20px;
+    background-color: #36393e;
+    outline: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    color: #fff;
+    border: none;
+    height: 40px;
+    text-align: left;
+}
+
+.tabla-programa{
+    border-collapse: collapse;
+}
+
+
+/*----------------------------------------FIN APARTADO PROGRAMAS--------------------------------------------------------*/
+
+
+/*----------------------------------------INICIO FOOTER PAGINA--------------------------------------------*/
+
+.footer {
+    margin-top:30%;
+    background-color: #36393e;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/*----------------------------------------FIN FOOTER PAGINA--------------------------------------------*/
+
+
+/*----------------------------------------INICIO MEDIA QUERY PARA DISPOSITIVOS DE BAJAS RESOLUCIONES--------------------------------------------*/
+
+@media (max-width: 700px){
+    .header{
+        flex-direction: column;
+    }
+
+    .header__logo{
+        padding-top: 20px;
+    }
+
+    .nav{
+        padding-top: 20px;
+    }
+
+    .login{
+        visibility: hidden;
+    }
+}
+
+/*----------------------------------------FIN MEDIA QUERY PARA DISPOSITIVOS DE BAJAS RESOLUCIONES--------------------------------------------*/
+
+
+
+

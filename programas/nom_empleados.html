@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/estilo.css">
+    <title>Kuronet</title>
+    <link rel="icon" type="image/x-icon" href="../ico/kuronet_favicon.ico">
+</head>
+
+<header class=header>
+    <a class="header__logo" href="inicio.html">Kuronet</a>
+    <nav class="nav">
+        <a class="nav__seccion" href="../inicio.html">Inicio</a>
+        <a class="nav__seccion" href="../catalogo.html">Catalogo</a>
+        <a class="nav__seccion" href="../contacto.html">Contacto</a>
+        <a class="nav__seccion" href="../programas.html">Programas</a>
+    </nav>
+    <a href="login.html"><button class="login">Login</button></a>
+</header>
+
+<body class="body-programa">
+    <section class="section-programa section-programa--ne">
+        <form class="form-programa">
+            <h1 class="form-programa__header">Nomina de Empleado</h1>
+            <label class="form-programa__label" for="tipo-documento">Tipo de documento</label>
+            <select class="form-programa__select" id="tipo-documento">
+                <option class="form-programa__option" value="suma">Cedula de Ciudadania</option>
+                <option class="form-programa__option" value="resta">Pasaporte</option>
+                <option class="form-programa__option" value="producto">Cedula de Extranjeria</option>
+                <option class="form-programa__option" value="division">Otro</option>
+            </select>
+            <label class="form-programa__label" for="num-documento">Numero de documento</label>
+            <input class="form-programa__input" type="number" id="num-documento" name="num-documento" required>
+            <label class="form-programa__label" for="nombre">Nombre</label>
+            <input class="form-programa__input" id="nombre" name="nombre" required>
+            <label class="form-programa__label" for="salario">Salario (sin puntos ni comas)</label>
+            <input class="form-programa__input" type="number" id="salario" name="salario" required>
+            <label class="form-programa__label" for="dias-trabajados">Dias trabajados</label>
+            <input class="form-programa__input" type="number" id="dias-trabajados" name="dias-trabajados" required>
+            <label class="form-programa__label" for="horas-ex-diurnas">Horas extra diurnas (horas trabajadas despues de
+                horario de 6am a 9pm)</label>
+            <input class="form-programa__input" type="number" id="horas-ex-diurnas" name="horas-ex-diurnas" required>
+            <label class="form-programa__label" for="horas-ex-nocturnas">Horas extra nocturnas (horas trabajas en
+                horario de 9pm a 6am)</label>
+            <input class="form-programa__input" type="number" id="horas-ex-nocturnas" name="horas-ex-nocturnas"
+                required>
+            <label class="form-programa__label" for="horas-ex-festivas">Horas extra festiva diurnas</label>
+            <input class="form-programa__input" type="number" id="horas-ex-festivas" name="horas-ex-festivas" required>
+            <label class="form-programa__label" for="horas-ex-festivas-nocturnas">Horas extra festiva nocturnas</label>
+            <input class="form-programa__input" type="number" id="horas-ex-festivas-nocturnas"
+                name="horas-ex-festivas-nocturnas" required>
+            <label class="form-programa__label" for="prestamo">Valor prestamo (mensual)</label>
+            <input class="form-programa__input" type="number" id="prestamo" name="prestamo" required>
+            <button class="form-login__button" id="calcular-button" type="button">Calcular</button>
+            <label class="form-programa__label" for="total-devengado">Total devengado</label>
+            <input class="form-programa__input" id="total-devengado" name="total-devengado" readonly>
+            <label class="form-programa__label" for="total-deducido">Total deducido (valor completo de las
+                deducciones)</label>
+            <input class="form-programa__input" id="total-deducido" name="total-deducido" readonly>
+            <label class="form-programa__label" for="neto-pagado">Neto pagado (total devengado al restar el total
+                deducido)</label>
+            <input class="form-programa__input" id="neto-pagado" name="neto-pagado" readonly>
+        </form>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2023 Kuronet</p>
+    </footer>
+    <script>
+        const calcularButton = document.getElementById("calcular-button")
+        const tipoDocumentoSelect = document.getElementById("tipo-documento")
+        const documentoInput = document.getElementById("num-documento");
+        const nombreInput = document.getElementById("nombre");
+        const salarioInput = document.getElementById("salario");
+        const diasTrabajadosInput = document.getElementById("dias-trabajados");
+        const horasExtraDiurnasInput = document.getElementById("horas-ex-diurnas");
+        const horasExtraNocturnasInput = document.getElementById("horas-ex-nocturnas");
+        const horasExtraFestivasDiurnasInput = document.getElementById("horas-ex-festivas");
+        const horasExtraFestivasNocturnasInput = document.getElementById("horas-ex-festivas-nocturnas");
+        const prestamoInput = document.getElementById("prestamo");
+        const totalDevengadoInput = document.getElementById("total-devengado");
+        const totalDeducidoInput = document.getElementById("total-deducido");
+        const netoPagadoInput = document.getElementById("neto-pagado");
+
+        const SMLV = 1160000;
+
+        calcularButton.addEventListener("click", function () {
+            const tipoDocumento = tipoDocumentoSelect.value;
+            const documento = documentoInput.value;
+            const nombre = nombreInput.value;
+            const salario = parseFloat(salarioInput.value);
+            const diasTrabajados = parseInt(diasTrabajadosInput.value);
+            const horasExtraDiurnas = parseInt(horasExtraDiurnasInput.value);
+            const horasExtraNocturnas = parseInt(horasExtraNocturnasInput.value);
+            const horasExtraFestivasDiurnas = parseInt(horasExtraFestivasDiurnasInput.value);
+            const horasExtraFestivasNocturnas = parseInt(horasExtraFestivasNocturnasInput.value);
+            const valorPrestamo = parseFloat(prestamoInput.value);
+
+            let sueldo, auxilioTransporte, valorHora, valorHorasExtraDiurnas, valorHorasExtraNocturnas, valorHorasExtraFestivasDiurnas,
+                valorHorasExtraFestivasNocturnas, totalDevengado, salud, pension, prestamos, fondoSolidaridad, totalDeducido, netoPagado;
+
+            sueldo = (salario / 30) * diasTrabajados;
+
+            //Añadir condicion para personas con salario mayor a 2 SMLV
+            if (salario > SMLV * 2) {
+                auxilioTransporte = 0;
+            } else {
+                auxilioTransporte = 140606;
+            }
+
+            valorHora = ((salario / 30) / 8);
+            valorHorasExtraDiurnas = valorHora * 0.25;
+            valorHorasExtraNocturnas = valorHora * 0.75;
+            valorHorasExtraFestivasDiurnas = valorHorasExtraDiurnas + (valorHora * 0.75);
+            valorHorasExtraFestivasNocturnas = valorHorasExtraNocturnas + (valorHora * 0.75);
+
+            totalHorasExtraDiurnas = (horasExtraDiurnas * valorHorasExtraDiurnas);
+            totalHorasExtraNocturnas = (horasExtraNocturnas * valorHorasExtraNocturnas);
+            totalHorasExtraFestivasDiurnas = (horasExtraFestivasDiurnas * valorHorasExtraFestivasDiurnas);
+            totalHorasExtraFestivasNocturnas = (horasExtraFestivasNocturnas * valorHorasExtraFestivasNocturnas)
+
+
+            totalDevengado = sueldo + auxilioTransporte + totalHorasExtraDiurnas + totalHorasExtraNocturnas + totalHorasExtraFestivasDiurnas
+                + totalHorasExtraFestivasNocturnas;
+
+            salud = totalDevengado * 0.04;
+            pension = totalDevengado * 0.04;
+
+            if (salario > SMLV * 4) {
+                fondoSolidaridad = totalDevengado * 0.01;
+            }
+            else {
+                fondoSolidaridad = 0;
+            }
+
+            totalDeducido = salud + pension + valorPrestamo + fondoSolidaridad;
+
+            netoPagado = totalDevengado - totalDeducido;
+
+            console.log(salud + " " + pension + " "  + valorPrestamo + " " +  fondoSolidaridad + " " + totalDeducido)
+
+            //Se agregan los valores a los campos de input
+            totalDevengadoInput.value = totalDevengado.toFixed(1);
+            totalDeducidoInput.value = totalDeducido.toFixed(1);
+            netoPagadoInput.value = netoPagado.toFixed(1);
+        })
+
+    </script>
+</body>
+
+</html>

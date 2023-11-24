@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/estilo.css">
+    <title>Kuronet</title>
+    <link rel="icon" type="image/x-icon" href="../ico/kuronet_favicon.ico">
+</head>
+
+<header class=header>
+    <a class="header__logo" href="inicio.html">Kuronet</a>
+    <nav class="nav">
+        <a class="nav__seccion" href="../inicio.html">Inicio</a>
+        <a class="nav__seccion" href="../catalogo.html">Catalogo</a>
+        <a class="nav__seccion" href="../contacto.html">Contacto</a>
+        <a class="nav__seccion" href="../programas.html">Programas</a>
+    </nav>
+    <a href="login.html"><button class="login">Login</button></a>
+</header>
+
+<body class="body-programa">
+    <section class="section-programa">
+        <form class="form-programa">
+            <h1 class="form-programa__header">Incentivos Semanales</h1>
+            <label class="form-programa__label" for="unidades">Ingrese las unidades logradas en la semana</label>
+            <input class="form-programa__input" type="number" id="unidades" name="unidades" required>
+            <button class="form-login__button" id="calcular-button" type="button">Calcular</button>
+            <label class="form-programa__label" for="incentivos">¿Recibe incentivos?</label>
+            <input class="form-programa__input" id="incentivos" name="incentivos" readonly>
+            <label class="form-programa__label" for="salario">Salario semanal</label>
+            <input class="form-programa__input" id="salario" name="salario" readonly>
+        </form>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2023 Kuronet</p>
+    </footer>
+    <script>
+        const calcularButton = document.getElementById("calcular-button");
+        const unidadesInput = document.getElementById("unidades");
+        const incentivoInput = document.getElementById("incentivos");
+        const salarioInput = document.getElementById("salario");
+
+        const tasasIncentivo = [
+            { limite: 99, porcentaje: 0, tarifa: 2 },
+            { limite: 199, porcentaje: 10, tarifa: 2 },
+            { limite: 299, porcentaje: 12, tarifa: 2.5 },
+            { limite: 399, porcentaje: 14, tarifa: 3 },
+            { limite: Infinity, porcentaje: 16, tarifa: 3.5 }, //Se puede cambiar 400 por infinity y borrar la segunda condicion del if (num_unidades > 400)
+        ];
+
+        calcularButton.addEventListener("click", function () {
+            const num_unidades = parseInt(unidadesInput.value);
+
+            if (num_unidades < 0) {
+                alert("Ingresa un valor valido");
+
+            } else {
+                let ingresoTotal = 0;
+                let salarioSemanal = 0;
+
+                //Obtencion del salario semanal
+                for (let i = 0; i < tasasIncentivo.length; i++) {
+                    const tasa = tasasIncentivo[i];
+
+                    if (num_unidades <= tasa.limite) {
+                        ingresoTotal = num_unidades * tasa.tarifa;
+                        break;
+                    }
+                    else {
+                        ingresoTotal = tasa.limite * tasa.tarifa;
+                    }
+                }
+
+                //Obtencion del incentivo basado en el salario obtenido
+                const porcentajeIncentivo = tasasIncentivo.find((tasa) => num_unidades <= tasa.limite).porcentaje;
+                valorIncentivo = (porcentajeIncentivo / 100) * ingresoTotal;
+                salarioTotal = ingresoTotal + valorIncentivo;
+
+                if (valorIncentivo > 0) {
+                    incentivoInput.value = "Incentivo por valor de $" + valorIncentivo.toFixed(1);
+                } else {
+                    incentivoInput.value = "No recibe incentivo";
+                }
+
+                salarioInput.value = "$" + salarioTotal;
+            }
+        });
+
+
+    </script>
+
+</body>
+
+</html>
